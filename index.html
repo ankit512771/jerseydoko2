@@ -44,17 +44,19 @@
 
   nav .nav-links {
     display: flex;
-    gap: 20px;
+    gap: 15px;
   }
 
+  /* Smaller font size for nav links to fit one line */
   nav .nav-links a {
     color: #ccc;
     font-weight: 600;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.8rem;  /* Reduced font size */
     padding: 6px 12px;
     border-radius: 6px;
     transition: background-color 0.3s, color 0.3s;
+    white-space: nowrap; /* Prevent wrapping */
   }
 
   nav .nav-links a:hover,
@@ -352,7 +354,7 @@
       gap: 15px;
     }
     nav .nav-links a {
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       padding: 5px 10px;
     }
     .welcome-section h1 {
@@ -379,6 +381,7 @@
     <a href="#best-selling">Best Selling</a>
     <a href="#trending">Trending</a>
     <a href="#retro">Retro Kits</a>
+    <a href="#in-stock">Jerseys in Stock</a>
   </div>
 </nav>
 
@@ -422,6 +425,12 @@
       <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Top Jersey 3 on WhatsApp">Buy Now</a>
       <button class="view-details-button" data-jersey="jersey3" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
     </div>
+    <div>
+  <img src="jersey1.jpg" alt="portugal" />
+  <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20Portugal|| Ronaldo 17%20 Retro Jersey%20" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Your Jersey Name on WhatsApp">Buy Now</a>
+  <button class="view-details-button" data-jersey="jersey11" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
+</div>
+
   </div>
 </section>
 
@@ -450,7 +459,12 @@
       <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Trending Jersey 3 on WhatsApp">Buy Now</a>
       <button class="view-details-button" data-jersey="jersey6" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
     </div>
-    
+    <div>
+  <img src="jersey1.jpg" alt="portugal" />
+  <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20Portugal|| Ronaldo 17%20 Retro Jersey%20" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Your Jersey Name on WhatsApp">Buy Now</a>
+  <button class="view-details-button" data-jersey="jersey11" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
+</div>
+
   </div>
 </section>
 
@@ -484,147 +498,209 @@
       <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Retro Jersey 4 on WhatsApp">Buy Now</a>
       <button class="view-details-button" data-jersey="jersey10" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
     </div>
+    <div>
+  <img src="jersey1.jpg" alt="Yportugal" />
+  <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20Portugal|| Ronaldo 17%20 Retro Jersey%20" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Your Jersey Name on WhatsApp">Buy Now</a>
+  <button class="view-details-button" data-jersey="jersey11" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
+</div>
+
   </div>
 </section>
 
-<footer>
-  &copy; 2025 Jersey Doko. All rights reserved.
-</footer>
+<!-- Jerseys in Stock Section -->
+<section id="in-stock">
+  <div class="category-banner">
+    <img src="banner3.jpg" alt="Jerseys in Stock Banner" />
+  </div>
+  <div class="category-header">
+    <h2>📦 Jerseys in Stock</h2>
+    <p>Check out our available jerseys ready to ship. Grab yours before they're gone!</p>
+  </div>
+  <div class="grid-banner">
+    <div>
+      <img src="jersey4.jpg" alt="In Stock Jersey 1" />
+      <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20In%20Stock%20Jersey%201" target="_blank" rel="noopener" class="buy-button" aria-label="Buy In Stock Jersey 1 on WhatsApp">Buy Now</a>
+      <button class="view-details-button" data-jersey="jersey4" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
+    </div>
+    <div>
+      <img src="jersey5.jpg" alt="In Stock Jersey 2" />
+      <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20In%20Stock%20Jersey%202" target="_blank" rel="noopener" class="buy-button" aria-label="Buy In Stock Jersey 2 on WhatsApp">Buy Now</a>
+      <button class="view-details-button" data-jersey="jersey5" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
+    </div>
+    <div>
+      <img src="jersey6.jpg" alt="In Stock Jersey 3" />
+      <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20In%20Stock%20Jersey%203" target="_blank" rel="noopener" class="buy-button" aria-label="Buy In Stock Jersey 3 on WhatsApp">Buy Now</a>
+      <button class="view-details-button" data-jersey="jersey6" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
+    </div>
+    <div>
+      <img src="jersey7.jpg" alt="In Stock Jersey 4" />
+      <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20In%20Stock%20Jersey%204" target="_blank" rel="noopener" class="buy-button" aria-label="Buy In Stock Jersey 4 on WhatsApp">Buy Now</a>
+      <button class="view-details-button" data-jersey="jersey7" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
+    </div>
+    <div>
+      <img src="jersey8.jpg" alt="In Stock Jersey 5" />
+      <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20In%20Stock%20Jersey%205" target="_blank" rel="noopener" class="buy-button" aria-label="Buy In Stock Jersey 5 on WhatsApp">Buy Now</a>
+      <button class="view-details-button" data-jersey="jersey8" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
+    </div>
+    <div>
+      <img src="jersey9.jpg" alt="In Stock Jersey 6" />
+      <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20In%20Stock%20Jersey%206" target="_blank" rel="noopener" class="buy-button" aria-label="Buy In Stock Jersey 6 on WhatsApp">Buy Now</a>
+      <button class="view-details-button" data-jersey="jersey9" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
+    </div>
+    <div>
+      <img src="jersey10.jpg" alt="In Stock Jersey 7" />
+      <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20In%20Stock%20Jersey%207" target="_blank" rel="noopener" class="buy-button" aria-label="Buy In Stock Jersey 7 on WhatsApp">Buy Now</a>
+      <button class="view-details-button" data-jersey="jersey10" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
+    </div>
+    <div>
+  <img src="jersey1.jpg" alt="portugal" />
+  <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20Portugal|| Ronaldo 17%20 Retro Jersey%20" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Your Jersey Name on WhatsApp">Buy Now</a>
+  <button class="view-details-button" data-jersey="jersey11" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
+</div>
 
-<button id="scrollTopBtn" aria-label="Scroll to top">&#8679;</button>
+  </div>
+</section>
 
-<!-- Details Modal -->
+<!-- Modal for Jersey Details -->
 <div id="detailsModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
-  <div class="modal-content" role="document">
-    <button class="close-btn" aria-label="Close details">&times;</button>
-    <img src="" alt="" />
+  <div class="modal-content">
+    <button class="close-btn" aria-label="Close Details Modal">&times;</button>
+    <img src="" alt="" id="modalImage" />
     <h3 id="modalTitle"></h3>
     <p id="modalDesc"></p>
   </div>
 </div>
 
+<button id="scrollTopBtn" aria-label="Scroll to Top">↑</button>
+
+<footer>
+  &copy; 2025 Jersey Doko. All rights reserved.
+</footer>
+
 <script>
-  // Data for jerseys (update here only for details)
+  // Jersey details data
   const jerseyDetails = {
     jersey1: {
-      title: 'Real Madrid 25',
-      description: 'This is the detailed description of Top Jersey 1. Made with high-quality fabric, perfect for fans.',
+      title: 'Best Selling Jersey 1',
+      description: 'Our top-selling jersey, crafted with premium materials for comfort and durability.',
       imgSrc: 'jersey1.jpg',
-      imgAlt: 'Top Jersey 1 Full Image'
+      imgAlt: 'Best Selling Jersey 1 Full Image'
     },
     jersey2: {
-      title: 'Top Jersey 2',
-      description: 'Details about Top Jersey 2. Stylish and comfortable for everyday wear.',
+      title: 'Best Selling Jersey 2',
+      description: 'Classic and popular design, perfect for every football fan.',
       imgSrc: 'jersey2.jpg',
-      imgAlt: 'Top Jersey 2 Full Image'
+      imgAlt: 'Best Selling Jersey 2 Full Image'
     },
     jersey3: {
-      title: 'Top Jersey 3',
-      description: 'Explore the features of Top Jersey 3. Iconic design with superior stitching.',
+      title: 'Best Selling Jersey 3',
+      description: 'Iconic style meets top quality in this best seller.',
       imgSrc: 'jersey3.jpg',
-      imgAlt: 'Top Jersey 3 Full Image'
+      imgAlt: 'Best Selling Jersey 3 Full Image'
     },
     jersey4: {
       title: 'Trending Jersey 1',
-      description: 'Trending Jersey 1 is loved by fans worldwide for its vibrant colors.',
+      description: 'Trending Jersey 1 with fresh new look and vibrant colors.',
       imgSrc: 'jersey4.jpg',
       imgAlt: 'Trending Jersey 1 Full Image'
     },
     jersey5: {
       title: 'Trending Jersey 2',
-      description: 'Stay trendy with Trending Jersey 2, combining comfort and style.',
+      description: 'Stay ahead in style with Trending Jersey 2’s sleek design.',
       imgSrc: 'jersey5.jpg',
       imgAlt: 'Trending Jersey 2 Full Image'
     },
     jersey6: {
       title: 'Trending Jersey 3',
-      description: 'Popular Trending Jersey 3 with exclusive design details.',
+      description: 'Trending Jersey 3 combines comfort and style for everyday wear.',
       imgSrc: 'jersey6.jpg',
       imgAlt: 'Trending Jersey 3 Full Image'
     },
     jersey7: {
       title: 'Retro Jersey 1',
-      description: 'Retro Jersey 1 brings back the golden era of football.',
+      description: 'Classic Retro Jersey 1 to relive legendary football moments.',
       imgSrc: 'jersey7.jpg',
       imgAlt: 'Retro Jersey 1 Full Image'
     },
     jersey8: {
       title: 'Retro Jersey 2',
-      description: 'Classic look with Retro Jersey 2, perfect for collectors.',
+      description: 'Retro Jersey 2 with iconic vintage design and great fabric.',
       imgSrc: 'jersey8.jpg',
       imgAlt: 'Retro Jersey 2 Full Image'
     },
     jersey9: {
       title: 'Retro Jersey 3',
-      description: 'Retro Jersey 3 captures the spirit of vintage football kits.',
+      description: 'Timeless Retro Jersey 3 for the true football enthusiast.',
       imgSrc: 'jersey9.jpg',
       imgAlt: 'Retro Jersey 3 Full Image'
     },
     jersey10: {
       title: 'Retro Jersey 4',
-      description: 'Retro Jersey 4 is a timeless piece for every football fan.',
+      description: 'Retro Jersey 4 featuring historic team colors and logos.',
       imgSrc: 'jersey10.jpg',
       imgAlt: 'Retro Jersey 4 Full Image'
     },
-    
+    jersey11: {
+      title: 'Retro Jersey 4',
+      description: 'Retro Jersey 4 featuring historic team colors and logos.',
+      imgSrc: 'jersey1.jpg',
+      imgAlt: 'Retro Jersey 4 Full Image'
+    },
+
   };
 
   // Modal elements
   const modal = document.getElementById('detailsModal');
+  const modalImg = document.getElementById('modalImage');
   const modalTitle = document.getElementById('modalTitle');
   const modalDesc = document.getElementById('modalDesc');
-  const modalImg = modal.querySelector('img');
-  const closeBtn = modal.querySelector('.close-btn');
+  const closeModalBtn = document.querySelector('.close-btn');
 
-  // Open modal function
-  function openModal(jerseyKey) {
-    const jersey = jerseyDetails[jerseyKey];
-    if (!jersey) return;
+  // Show modal with jersey details
+  document.querySelectorAll('.view-details-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const jerseyKey = button.getAttribute('data-jersey');
+      const details = jerseyDetails[jerseyKey];
 
-    modalTitle.textContent = jersey.title;
-    modalDesc.textContent = jersey.description;
-    modalImg.src = jersey.imgSrc;
-    modalImg.alt = jersey.imgAlt;
-    modal.classList.add('visible');
-    document.body.style.overflow = 'hidden';
-  }
-
-  // Close modal function
-  function closeModal() {
-    modal.classList.remove('visible');
-    document.body.style.overflow = '';
-  }
-
-  // Event delegation for "View Details" buttons
-  document.body.addEventListener('click', e => {
-    if (e.target.classList.contains('view-details-button')) {
-      const jerseyKey = e.target.getAttribute('data-jersey');
-      openModal(jerseyKey);
-    }
+      if (details) {
+        modalImg.src = details.imgSrc;
+        modalImg.alt = details.imgAlt;
+        modalTitle.textContent = details.title;
+        modalDesc.textContent = details.description;
+        modal.classList.add('visible');
+        // Focus trap for accessibility could be added here
+        closeModalBtn.focus();
+      }
+    });
   });
 
-  closeBtn.addEventListener('click', closeModal);
+  // Close modal
+  closeModalBtn.addEventListener('click', () => {
+    modal.classList.remove('visible');
+  });
 
-  modal.addEventListener('click', e => {
-    if (e.target === modal) closeModal();
+  // Close modal on outside click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('visible');
+    }
   });
 
   // Scroll to top button
-  const scrollBtn = document.getElementById('scrollTopBtn');
-
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      scrollBtn.style.display = 'flex';
+    if (window.pageYOffset > 300) {
+      scrollTopBtn.style.display = 'flex';
     } else {
-      scrollBtn.style.display = 'none';
+      scrollTopBtn.style.display = 'none';
     }
   });
 
-  scrollBtn.addEventListener('click', () => {
+  scrollTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // Fade-in animation on scroll for sections
+  // Reveal sections on scroll
   const sections = document.querySelectorAll('section');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -633,9 +709,12 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.1 });
 
-  sections.forEach(section => observer.observe(section));
+  sections.forEach(section => {
+    observer.observe(section);
+  });
 </script>
+
 </body>
 </html>
