@@ -1,720 +1,733 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Jersey Doko</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jersey Doko</title>
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
-<style>
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    scroll-behavior: smooth;
-  }
-
-  body {
-    background-color: #121212;
-    color: #f5f5f5;
-    line-height: 1.6;
-  }
-
-  nav {
-    position: sticky;
-    top: 0;
-    background: #1e1e1e;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 30px;
-    box-shadow: 0 2px 8px rgba(0, 255, 174, 0.2);
-    z-index: 10000;
-  }
-
-  nav .logo {
-    color: #00ffae;
-    font-weight: 700;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-    user-select: none;
-    cursor: default;
-  }
-
-  nav .nav-links {
-    display: flex;
-    gap: 15px;
-  }
-
-  /* Smaller font size for nav links to fit one line */
-  nav .nav-links a {
-    color: #ccc;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 0.8rem;  /* Reduced font size */
-    padding: 6px 12px;
-    border-radius: 6px;
-    transition: background-color 0.3s, color 0.3s;
-    white-space: nowrap; /* Prevent wrapping */
-  }
-
-  nav .nav-links a:hover,
-  nav .nav-links a:focus {
-    background-color: #00ffae;
-    color: #121212;
-    outline: none;
-  }
-
-  .welcome-section {
-    max-width: 1000px;
-    margin: 20px auto 50px;
-    padding: 0 20px;
-    text-align: center;
-  }
-
-  .welcome-section h1 {
-    color: #00ffae;
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-  }
-
-  .welcome-section p {
-    font-size: 1.15rem;
-    color: #ccc;
-    max-width: 700px;
-    margin: 0 auto;
-    line-height: 1.5;
-    white-space: pre-line;
-  }
-
-  .fixed-banner {
-    max-width: 1000px;
-    height: 260px;
-    margin: 25px auto 50px;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 0 25px #00ffae55;
-    background: url('banner1.jpg') center center/cover no-repeat;
-    position: relative;
-  }
-
-  header {
-    text-align: center;
-    padding: 20px 10px 10px;
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #00ffae;
-  }
-
-  .header-feature {
-    display: block;
-    width: 120px;
-    height: 120px;
-    margin: 15px auto 40px;
-    border-radius: 50%;
-    border: 3px solid #00ffae;
-    object-fit: cover;
-    box-shadow: 0 0 15px #00ffae99;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
-
-  .header-feature:hover {
-    transform: scale(1.1);
-  }
-
-  /* --- Category Section Styles --- */
-
-  section {
-    max-width: 1000px;
-    margin: 60px auto 40px;
-    padding: 0 20px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.7s ease-out;
-  }
-
-  section.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Banner inside category */
-  .category-banner {
-    width: 100%;
-    height: 280px;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 0 25px #00ffae55;
-    margin-bottom: 30px;
-  }
-  .category-banner img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  /* Category heading & description */
-  .category-header {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  .category-header h2 {
-    color: #00ffae;
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-  .category-header p {
-    font-size: 1.1rem;
-    color: #ccc;
-  }
-
-  /* Jersey grid */
-  .grid-banner {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-  }
-
-  .grid-banner div {
-    background: #222;
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 0 10px #00ffae44;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: box-shadow 0.3s ease;
-  }
-
-  .grid-banner div:hover {
-    box-shadow: 0 0 25px #00ffaeaa;
-  }
-
-  .grid-banner img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 255, 174, 0.3);
-    transition: transform 0.3s;
-    cursor: pointer;
-  }
-
-  .grid-banner img:hover {
-    transform: scale(1.08);
-  }
-
-  .buy-button {
-    margin-top: 10px;
-    padding: 10px 25px;
-    background-color: #00ffae;
-    color: #121212;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 3px 8px #00ffaeaa;
-    display: inline-block;
-    text-align: center;
-  }
-
-  .buy-button:hover {
-    background-color: #00e69d;
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px #00ffaeee;
-  }
-
-  .view-details-button {
-    margin-top: 10px;
-    padding: 8px 20px;
-    border: 2px solid #00ffae;
-    background: transparent;
-    color: #00ffae;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s, color 0.3s;
-  }
-
-  .view-details-button:hover {
-    background-color: #00ffae;
-    color: #121212;
-  }
-
-  /* Modal Styles */
-  #detailsModal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right:0;
-    bottom:0;
-    background-color: rgba(0,0,0,0.85);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    z-index: 15000;
-  }
-
-  #detailsModal.visible {
-    display: flex;
-  }
-
-  #detailsModal .modal-content {
-    background-color: #222;
-    border-radius: 12px;
-    max-width: 700px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    padding: 20px;
-    box-shadow: 0 0 20px #00ffaeaa;
-    position: relative;
-    animation: fadeInScale 0.3s ease forwards;
-  }
-
-  @keyframes fadeInScale {
-    from {opacity: 0; transform: scale(0.8);}
-    to {opacity:1; transform: scale(1);}
-  }
-
-  #detailsModal .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 1.8rem;
-    background: none;
-    border: none;
-    color: #00ffae;
-    cursor: pointer;
-    font-weight: 700;
-  }
-
-  #detailsModal img {
-    width: 100%;
-    max-height: 300px;
-    object-fit: contain;
-    border-radius: 12px;
-    margin-bottom: 20px;
-  }
-
-  #detailsModal h3 {
-    color: #00ffae;
-    margin-bottom: 10px;
-  }
-
-  #detailsModal p {
-    color: #ccc;
-    line-height: 1.4;
-  }
-
-  /* Scroll to top button */
-  #scrollTopBtn {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: #00ffae;
-    border: none;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    font-size: 1.8rem;
-    color: #121212;
-    cursor: pointer;
-    box-shadow: 0 3px 8px #00ffaeaa;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
-    transition: background-color 0.3s;
-  }
-
-  #scrollTopBtn:hover {
-    background-color: #00e69d;
-  }
-
-  footer {
-    text-align: center;
-    padding: 20px 10px;
-    color: #666;
-    font-size: 0.9rem;
-    user-select: none;
-  }
-
-  @media (max-width: 768px) {
-    .grid-banner {
-      grid-template-columns: repeat(2, 1fr);
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
     }
+
+    body {
+      background-color: #121212;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
     nav {
-      padding: 10px 15px;
-      gap: 15px;
+      position: sticky;
+      top: 0;
+      background: #1e1e1e;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 30px;
+      box-shadow: 0 2px 8px rgba(0, 255, 174, 0.2);
+      z-index: 10000;
     }
+
+    nav .logo {
+      user-select: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    nav .logo img {
+      height: 40px;
+      /* Adjust height as needed */
+      width: auto;
+      object-fit: contain;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      /* smooth scrolling on iOS */
+    }
+
+    nav .nav-links::-webkit-scrollbar {
+      display: none;
+      /* Hide scrollbar on webkit browsers */
+    }
+
+    nav .nav-links {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
     nav .nav-links a {
-      font-size: 0.75rem;
-      padding: 5px 10px;
+      color: #ccc;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 6px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+      /* Prevent wrapping */
+      transition: background-color 0.3s, color 0.3s;
+      flex-shrink: 0;
     }
+
+    nav .nav-links a:hover,
+    nav .nav-links a:focus {
+      background-color: #00ffae;
+      color: #121212;
+      outline: none;
+    }
+
+    .welcome-section {
+      max-width: 1000px;
+      margin: 20px auto 50px;
+      padding: 0 20px;
+      text-align: center;
+    }
+
     .welcome-section h1 {
-      font-size: 2rem;
+      color: #00ffae;
+      font-size: 2.5rem;
+      margin-bottom: 15px;
     }
+
     .welcome-section p {
-      font-size: 1rem;
-      max-width: 90%;
+      font-size: 1.15rem;
+      color: #ccc;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.5;
+      white-space: pre-line;
     }
+
+    .fixed-banner {
+      max-width: 1000px;
+      height: 260px;
+      margin: 25px auto 50px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 25px #00ffae55;
+      background: url('banner1.jpg') center center/cover no-repeat;
+      position: relative;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px 10px 10px;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #00ffae;
+    }
+
     .header-feature {
-      width: 80px;
-      height: 80px;
-      margin-top: 5px;
+      display: block;
+      width: 120px;
+      height: 120px;
+      margin: 15px auto 40px;
+      border-radius: 50%;
+      border: 3px solid #00ffae;
+      object-fit: cover;
+      box-shadow: 0 0 15px #00ffae99;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .header-feature:hover {
+      transform: scale(1.1);
+    }
+
+    /* --- Category Section Styles --- */
+
+    section {
+      max-width: 1000px;
+      margin: 60px auto 40px;
+      padding: 0 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Banner inside category */
+    .category-banner {
+      width: 100%;
+      height: 280px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 25px #00ffae55;
       margin-bottom: 30px;
     }
-  }
-</style>
+
+    .category-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Category heading & description */
+    .category-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .category-header h2 {
+      color: #00ffae;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .category-header p {
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+
+    /* Jersey grid */
+    .grid-banner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+    }
+
+    .grid-banner div {
+      background: #222;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 0 10px #00ffae44;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .grid-banner div:hover {
+      box-shadow: 0 0 25px #00ffaeaa;
+    }
+
+    .grid-banner img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 255, 174, 0.3);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .grid-banner img:hover {
+      transform: scale(1.08);
+    }
+
+    .buy-button {
+      margin-top: 10px;
+      padding: 10px 25px;
+      background-color: #00ffae;
+      color: #121212;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 3px 8px #00ffaeaa;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .buy-button:hover {
+      background-color: #00e69d;
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px #00ffaeee;
+    }
+
+    .view-details-button {
+      margin-top: 10px;
+      padding: 8px 20px;
+      border: 2px solid #00ffae;
+      background: transparent;
+      color: #00ffae;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .view-details-button:hover {
+      background-color: #00ffae;
+      color: #121212;
+    }
+
+    /* Modal Styles */
+    #detailsModal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 15000;
+    }
+
+    #detailsModal.visible {
+      display: flex;
+    }
+
+    #detailsModal .modal-content {
+      background-color: #222;
+      border-radius: 12px;
+      max-width: 700px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 20px;
+      box-shadow: 0 0 20px #00ffaeaa;
+      position: relative;
+      animation: fadeInScale 0.3s ease forwards;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    #detailsModal .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: #00ffae;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    #detailsModal img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    #detailsModal h3 {
+      color: #00ffae;
+      margin-bottom: 10px;
+    }
+
+    #detailsModal p {
+      color: #ccc;
+      line-height: 1.4;
+    }
+
+    /* Scroll to top button */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #00ffae;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      font-size: 1.8rem;
+      color: #121212;
+      cursor: pointer;
+      box-shadow: 0 3px 8px #00ffaeaa;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      transition: background-color 0.3s;
+    }
+
+    #scrollTopBtn:hover {
+      background-color: #00e69d;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      color: #666;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    @media (max-width: 768px) {
+      .grid-banner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      nav {
+        padding: 10px 15px;
+        gap: 15px;
+      }
+
+      nav .nav-links a {
+        font-size: 13px;
+        /* smaller font to fit one line */
+        padding: 5px 10px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .welcome-section h1 {
+        font-size: 2rem;
+      }
+
+      .welcome-section p {
+        font-size: 1rem;
+        max-width: 90%;
+      }
+
+      .header-feature {
+        width: 80px;
+        height: 80px;
+        margin-top: 5px;
+        margin-bottom: 30px;
+      }
+
+      nav .logo img {
+        height: 35px;
+        /* smaller logo on mobile */
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<nav>
-  <div class="logo" aria-label="Jersey Doko Store Name">Jersey Doko</div>
-  <div class="nav-links" role="navigation" aria-label="Primary Navigation">
-    <a href="#best-selling">Best Selling</a>
-    <a href="#trending">Trending</a>
-    <a href="#retro">Retro Kits</a>
-    <a href="#in-stock">Jerseys in Stock</a>
+  <nav>
+    <div class="logo" aria-label="Jersey Doko Store Logo">
+      <img src="jerseydoko.jpg" alt="Jersey Doko Logo" />
+    </div>
+    <div class="nav-links" role="navigation" aria-label="Primary Navigation">
+
+      <a href="#best-selling">Best Selling</a>
+      <a href="#trending">Trending</a>
+      <a href="#retro">Retro Kits</a>
+
+    </div>
+  </nav>
+
+  <div class="welcome-section" role="region" aria-label="Welcome message and about us description">
+    <h1>Welcome to Jersey Doko!</h1>
+    <p>
+      We bring you the finest official and retro football jerseys.
+      Passionate about football, dedicated to quality, and committed to our customers.
+      Feel free to contact us on WhatsApp for orders and inquiries. Thank you for supporting us!
+    </p>
   </div>
-</nav>
 
-<div class="welcome-section" role="region" aria-label="Welcome message and about us description">
-  <h1>Welcome to Jersey Doko!</h1>
-  <p>
-    We bring you the finest official and retro football jerseys.
-    Passionate about football, dedicated to quality, and committed to our customers.
-    Feel free to contact us on WhatsApp for orders and inquiries. Thank you for supporting us!
-  </p>
-</div>
+  <div class="fixed-banner" role="img" aria-label="Store Banner Placeholder"></div>
 
-<div class="fixed-banner" role="img" aria-label="Store Banner Placeholder"></div>
+  <header>
+    <img class="header-feature" src="jerseydoko.jpg" alt="Featured Jersey" />
+  </header>
 
-<header>
-  <img class="header-feature" src="jerseydoko.jpg" alt="Featured Jersey" />
-</header>
+  <!-- Best Selling Section -->
+  <section id="best-selling">
+    <div class="category-banner">
+      <img src="banner2.jpg" alt="Best Seller Banner" />
+    </div>
+    <div class="category-header">
+      <h2>🏆 Best Selling</h2>
+      <p>Explore our most popular jerseys, loved by fans all over the world.</p>
+    </div>
+    <div class="grid-banner">
+      <div>
+        <img src="jersey1.jpg" alt="Top Jersey 1" />
+        <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener"
+          class="buy-button" aria-label="Buy Top Jersey 1 on WhatsApp">Buy Now</a>
+        <button class="view-details-button" data-jersey="jersey1" aria-haspopup="dialog"
+          aria-controls="detailsModal">View Details</button>
+      </div>
+      <div>
+        <img src="jersey2.jpg" alt="Top Jersey 2" />
+        <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener"
+          class="buy-button" aria-label="Buy Top Jersey 2 on WhatsApp">Buy Now</a>
+        <button class="view-details-button" data-jersey="jersey2" aria-haspopup="dialog"
+          aria-controls="detailsModal">View Details</button>
+      </div>
+      <div>
+        <img src="jersey3.jpg" alt="Top Jersey 3" />
+        <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener"
+          class="buy-button" aria-label="Buy Top Jersey 3 on WhatsApp">Buy Now</a>
+        <button class="view-details-button" data-jersey="jersey3" aria-haspopup="dialog"
+          aria-controls="detailsModal">View Details</button>
+      </div>
+    </div>
+  </section>
 
-<!-- Best Selling Section -->
-<section id="best-selling">
-  <div class="category-banner">
-    <img src="banner2.jpg" alt="Best Seller Banner" />
+  <!-- Trending Section -->
+  <section id="trending">
+    <div class="category-banner">
+      <img src="banner3.jpg" alt="Trending Banner" />
+    </div>
+    <div class="category-header">
+      <h2>🔥 Trending</h2>
+      <p>Jerseys that are turning heads this season – trending right now!</p>
+    </div>
+    <div class="grid-banner">
+      <div>
+        <img src="jersey4.jpg" alt="Trending Jersey 1" />
+        <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener"
+          class="buy-button" aria-label="Buy Trending Jersey 1 on WhatsApp">Buy Now</a>
+        <button class="view-details-button" data-jersey="jersey4" aria-haspopup="dialog"
+          aria-controls="detailsModal">View Details</button>
+      </div>
+      <div>
+        <img src="jersey5.jpg" alt="Trending Jersey 2" />
+        <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener"
+          class="buy-button" aria-label="Buy Trending Jersey 2 on WhatsApp">Buy Now</a>
+        <button class="view-details-button" data-jersey="jersey5" aria-haspopup="dialog"
+          aria-controls="detailsModal">View Details</button>
+      </div>
+      <div>
+        <img src="jersey6.jpg" alt="Trending Jersey 3" />
+        <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener"
+          class="buy-button" aria-label="Buy Trending Jersey 3 on WhatsApp">Buy Now</a>
+        <button class="view-details-button" data-jersey="jersey6" aria-haspopup="dialog"
+          aria-controls="detailsModal">View Details</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Retro Section -->
+  <section id="retro">
+    <div class="category-banner">
+      <img src="banner4.jpg" alt="Retro Banner" />
+    </div>
+    <div class="category-header">
+      <h2>🕰️ Retro Kits</h2>
+      <p>Throwback to the classic designs. Relive the golden moments in football history.</p>
+    </div>
+    <div class="grid-banner">
+      <div>
+        <img src="jersey7.jpg" alt="Retro Jersey 1" />
+        <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener"
+          class="buy-button" aria-label="Buy Retro Jersey 1 on WhatsApp">Buy Now</a>
+        <button class="view-details-button" data-jersey="jersey7" aria-haspopup="dialog"
+          aria-controls="detailsModal">View Details</button>
+      </div>
+      <div>
+        <img src="jersey8.jpg" alt="Retro Jersey 2" />
+        <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener"
+          class="buy-button" aria-label="Buy Retro Jersey 2 on WhatsApp">Buy Now</a>
+        <button class="view-details-button" data-jersey="jersey8" aria-haspopup="dialog"
+          aria-controls="detailsModal">View Details</button>
+      </div>
+      <div>
+        <img src="jersey9.jpg" alt="Retro Jersey 3" />
+        <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener"
+          class="buy-button" aria-label="Buy Retro Jersey 3 on WhatsApp">Buy Now</a>
+        <button class="view-details-button" data-jersey="jersey9" aria-haspopup="dialog"
+          aria-controls="detailsModal">View Details</button>
+      </div>
+      <div>
+        <img src="jersey10.jpg" alt="Retro Jersey 4" />
+        <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener"
+          class="buy-button" aria-label="Buy Retro Jersey 4 on WhatsApp">Buy Now</a>
+        <button class="view-details-button" data-jersey="jersey10" aria-haspopup="dialog"
+          aria-controls="detailsModal">View Details</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Jerseys in Stock Section -->
+  <section id="jerseys-in-stock">
+    <div class="category-banner">
+      <img src="banner5.jpg" alt="Jerseys in Stock Banner" />
+    </div>
+    <div class="category-header">
+      <h2>⚡ Jerseys in Stock</h2>
+      <p>Ready to ship! Get your favorite jerseys immediately from our stocked collection.</p>
+    </div>
+    <div class="grid-banner">
+      <!-- Using Trending and Retro jersey photos as requested -->
+      <div>
+        <img src="jersey4.jpg" alt="Jersey In Stock 1" />
+        <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener"
+          class="buy-button" aria-label="Buy Jersey In Stock 1 on WhatsApp">Buy Now</a>
+        <button class="view-details-button" data-jersey="jersey4" aria-haspopup="dialog"
+          aria-controls="detailsModal">View Details</button>
+      </div>
+      <div>
+        <img src="jersey7.jpg" alt="Jersey In Stock 2" />
+        <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener"
+          class="buy-button" aria-label="Buy Jersey In Stock 2 on WhatsApp">Buy Now</a>
+        <button class="view-details-button" data-jersey="jersey7" aria-haspopup="dialog"
+          aria-controls="detailsModal">View Details</button>
+      </div>
+      <div>
+        <img src="jersey8.jpg" alt="Jersey In Stock 3" />
+        <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener"
+          class="buy-button" aria-label="Buy Jersey In Stock 3 on WhatsApp">Buy Now</a>
+        <button class="view-details-button" data-jersey="jersey8" aria-haspopup="dialog"
+          aria-controls="detailsModal">View Details</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Details Modal -->
+  <div id="detailsModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+    <div class="modal-content">
+      <button class="close-btn" aria-label="Close Details Modal">&times;</button>
+      <img src="" alt="" id="modalImg" />
+      <h3 id="modalTitle">Jersey Title</h3>
+      <p id="modalDesc">Jersey details will appear here...</p>
+    </div>
   </div>
-  <div class="category-header">
-    <h2>🏆 Best Selling</h2>
-    <p>Explore our most popular jerseys, loved by fans all over the world.</p>
-  </div>
-  <div class="grid-banner">
-    <div>
-      <img src="jersey1.jpg" alt="Top Jersey 1" />
-      <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Top Jersey 1 on WhatsApp">Buy Now</a>
-      <button class="view-details-button" data-jersey="jersey1" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-    </div>
-    <div>
-      <img src="jersey2.jpg" alt="Top Jersey 2" />
-      <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Top Jersey 2 on WhatsApp">Buy Now</a>
-      <button class="view-details-button" data-jersey="jersey2" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-    </div>
-    <div>
-      <img src="jersey3.jpg" alt="Top Jersey 3" />
-      <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Top Jersey 3 on WhatsApp">Buy Now</a>
-      <button class="view-details-button" data-jersey="jersey3" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-    </div>
-    <div>
-  <img src="jersey1.jpg" alt="portugal" />
-  <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20Portugal|| Ronaldo 17%20 Retro Jersey%20" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Your Jersey Name on WhatsApp">Buy Now</a>
-  <button class="view-details-button" data-jersey="jersey11" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-</div>
 
-  </div>
-</section>
+  <!-- Scroll to Top Button -->
+  <button id="scrollTopBtn" aria-label="Scroll to Top">&#8679;</button>
 
-<!-- Trending Section -->
-<section id="trending">
-  <div class="category-banner">
-    <img src="banner3.jpg" alt="Trending Banner" />
-  </div>
-  <div class="category-header">
-    <h2>🔥 Trending</h2>
-    <p>Jerseys that are turning heads this season – trending right now!</p>
-  </div>
-  <div class="grid-banner">
-    <div>
-      <img src="jersey4.jpg" alt="Trending Jersey 1" />
-      <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Trending Jersey 1 on WhatsApp">Buy Now</a>
-      <button class="view-details-button" data-jersey="jersey4" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-    </div>
-    <div>
-      <img src="jersey5.jpg" alt="Trending Jersey 2" />
-      <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Trending Jersey 2 on WhatsApp">Buy Now</a>
-      <button class="view-details-button" data-jersey="jersey5" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-    </div>
-    <div>
-      <img src="jersey6.jpg" alt="Trending Jersey 3" />
-      <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Trending Jersey 3 on WhatsApp">Buy Now</a>
-      <button class="view-details-button" data-jersey="jersey6" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-    </div>
-    <div>
-  <img src="jersey1.jpg" alt="portugal" />
-  <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20Portugal|| Ronaldo 17%20 Retro Jersey%20" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Your Jersey Name on WhatsApp">Buy Now</a>
-  <button class="view-details-button" data-jersey="jersey11" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-</div>
+  <footer>
+    &copy; 2025 Jersey Doko. All rights reserved.
+  </footer>
 
-  </div>
-</section>
-
-<!-- Retro Section -->
-<section id="retro">
-  <div class="category-banner">
-    <img src="banner4.jpg" alt="Retro Banner" />
-  </div>
-  <div class="category-header">
-    <h2>🕰️ Retro Kits</h2>
-    <p>Throwback to the classic designs. Relive the golden moments in football history.</p>
-  </div>
-  <div class="grid-banner">
-    <div>
-      <img src="jersey7.jpg" alt="Retro Jersey 1" />
-      <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Retro Jersey 1 on WhatsApp">Buy Now</a>
-      <button class="view-details-button" data-jersey="jersey7" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-    </div>
-    <div>
-      <img src="jersey8.jpg" alt="Retro Jersey 2" />
-      <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Retro Jersey 2 on WhatsApp">Buy Now</a>
-      <button class="view-details-button" data-jersey="jersey8" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-    </div>
-    <div>
-      <img src="jersey9.jpg" alt="Retro Jersey 3" />
-      <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Retro Jersey 3 on WhatsApp">Buy Now</a>
-      <button class="view-details-button" data-jersey="jersey9" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-    </div>
-    <div>
-      <img src="jersey10.jpg" alt="Retro Jersey 4" />
-      <a href="https://wa.me/9779703030297?text=Hello%20Anybody%20there" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Retro Jersey 4 on WhatsApp">Buy Now</a>
-      <button class="view-details-button" data-jersey="jersey10" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-    </div>
-    <div>
-  <img src="jersey1.jpg" alt="Yportugal" />
-  <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20Portugal|| Ronaldo 17%20 Retro Jersey%20" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Your Jersey Name on WhatsApp">Buy Now</a>
-  <button class="view-details-button" data-jersey="jersey11" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-</div>
-
-  </div>
-</section>
-
-<!-- Jerseys in Stock Section -->
-<section id="in-stock">
-  <div class="category-banner">
-    <img src="banner3.jpg" alt="Jerseys in Stock Banner" />
-  </div>
-  <div class="category-header">
-    <h2>📦 Jerseys in Stock</h2>
-    <p>Check out our available jerseys ready to ship. Grab yours before they're gone!</p>
-  </div>
-  <div class="grid-banner">
-    <div>
-      <img src="jersey4.jpg" alt="In Stock Jersey 1" />
-      <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20In%20Stock%20Jersey%201" target="_blank" rel="noopener" class="buy-button" aria-label="Buy In Stock Jersey 1 on WhatsApp">Buy Now</a>
-      <button class="view-details-button" data-jersey="jersey4" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-    </div>
-    <div>
-      <img src="jersey5.jpg" alt="In Stock Jersey 2" />
-      <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20In%20Stock%20Jersey%202" target="_blank" rel="noopener" class="buy-button" aria-label="Buy In Stock Jersey 2 on WhatsApp">Buy Now</a>
-      <button class="view-details-button" data-jersey="jersey5" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-    </div>
-    <div>
-      <img src="jersey6.jpg" alt="In Stock Jersey 3" />
-      <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20In%20Stock%20Jersey%203" target="_blank" rel="noopener" class="buy-button" aria-label="Buy In Stock Jersey 3 on WhatsApp">Buy Now</a>
-      <button class="view-details-button" data-jersey="jersey6" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-    </div>
-    <div>
-      <img src="jersey7.jpg" alt="In Stock Jersey 4" />
-      <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20In%20Stock%20Jersey%204" target="_blank" rel="noopener" class="buy-button" aria-label="Buy In Stock Jersey 4 on WhatsApp">Buy Now</a>
-      <button class="view-details-button" data-jersey="jersey7" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-    </div>
-    <div>
-      <img src="jersey8.jpg" alt="In Stock Jersey 5" />
-      <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20In%20Stock%20Jersey%205" target="_blank" rel="noopener" class="buy-button" aria-label="Buy In Stock Jersey 5 on WhatsApp">Buy Now</a>
-      <button class="view-details-button" data-jersey="jersey8" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-    </div>
-    <div>
-      <img src="jersey9.jpg" alt="In Stock Jersey 6" />
-      <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20In%20Stock%20Jersey%206" target="_blank" rel="noopener" class="buy-button" aria-label="Buy In Stock Jersey 6 on WhatsApp">Buy Now</a>
-      <button class="view-details-button" data-jersey="jersey9" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-    </div>
-    <div>
-      <img src="jersey10.jpg" alt="In Stock Jersey 7" />
-      <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20In%20Stock%20Jersey%207" target="_blank" rel="noopener" class="buy-button" aria-label="Buy In Stock Jersey 7 on WhatsApp">Buy Now</a>
-      <button class="view-details-button" data-jersey="jersey10" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-    </div>
-    <div>
-  <img src="jersey1.jpg" alt="portugal" />
-  <a href="https://wa.me/9779703030297?text=Hello%20I'm%20interested%20in%20Portugal|| Ronaldo 17%20 Retro Jersey%20" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Your Jersey Name on WhatsApp">Buy Now</a>
-  <button class="view-details-button" data-jersey="jersey11" aria-haspopup="dialog" aria-controls="detailsModal">View Details</button>
-</div>
-
-  </div>
-</section>
-
-<!-- Modal for Jersey Details -->
-<div id="detailsModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
-  <div class="modal-content">
-    <button class="close-btn" aria-label="Close Details Modal">&times;</button>
-    <img src="" alt="" id="modalImage" />
-    <h3 id="modalTitle"></h3>
-    <p id="modalDesc"></p>
-  </div>
-</div>
-
-<button id="scrollTopBtn" aria-label="Scroll to Top">↑</button>
-
-<footer>
-  &copy; 2025 Jersey Doko. All rights reserved.
-</footer>
-
-<script>
-  // Jersey details data
-  const jerseyDetails = {
-    jersey1: {
-      title: 'Best Selling Jersey 1',
-      description: 'Our top-selling jersey, crafted with premium materials for comfort and durability.',
-      imgSrc: 'jersey1.jpg',
-      imgAlt: 'Best Selling Jersey 1 Full Image'
-    },
-    jersey2: {
-      title: 'Best Selling Jersey 2',
-      description: 'Classic and popular design, perfect for every football fan.',
-      imgSrc: 'jersey2.jpg',
-      imgAlt: 'Best Selling Jersey 2 Full Image'
-    },
-    jersey3: {
-      title: 'Best Selling Jersey 3',
-      description: 'Iconic style meets top quality in this best seller.',
-      imgSrc: 'jersey3.jpg',
-      imgAlt: 'Best Selling Jersey 3 Full Image'
-    },
-    jersey4: {
-      title: 'Trending Jersey 1',
-      description: 'Trending Jersey 1 with fresh new look and vibrant colors.',
-      imgSrc: 'jersey4.jpg',
-      imgAlt: 'Trending Jersey 1 Full Image'
-    },
-    jersey5: {
-      title: 'Trending Jersey 2',
-      description: 'Stay ahead in style with Trending Jersey 2’s sleek design.',
-      imgSrc: 'jersey5.jpg',
-      imgAlt: 'Trending Jersey 2 Full Image'
-    },
-    jersey6: {
-      title: 'Trending Jersey 3',
-      description: 'Trending Jersey 3 combines comfort and style for everyday wear.',
-      imgSrc: 'jersey6.jpg',
-      imgAlt: 'Trending Jersey 3 Full Image'
-    },
-    jersey7: {
-      title: 'Retro Jersey 1',
-      description: 'Classic Retro Jersey 1 to relive legendary football moments.',
-      imgSrc: 'jersey7.jpg',
-      imgAlt: 'Retro Jersey 1 Full Image'
-    },
-    jersey8: {
-      title: 'Retro Jersey 2',
-      description: 'Retro Jersey 2 with iconic vintage design and great fabric.',
-      imgSrc: 'jersey8.jpg',
-      imgAlt: 'Retro Jersey 2 Full Image'
-    },
-    jersey9: {
-      title: 'Retro Jersey 3',
-      description: 'Timeless Retro Jersey 3 for the true football enthusiast.',
-      imgSrc: 'jersey9.jpg',
-      imgAlt: 'Retro Jersey 3 Full Image'
-    },
-    jersey10: {
-      title: 'Retro Jersey 4',
-      description: 'Retro Jersey 4 featuring historic team colors and logos.',
-      imgSrc: 'jersey10.jpg',
-      imgAlt: 'Retro Jersey 4 Full Image'
-    },
-    jersey11: {
-      title: 'Retro Jersey 4',
-      description: 'Retro Jersey 4 featuring historic team colors and logos.',
-      imgSrc: 'jersey1.jpg',
-      imgAlt: 'Retro Jersey 4 Full Image'
-    },
-
-  };
-
-  // Modal elements
-  const modal = document.getElementById('detailsModal');
-  const modalImg = document.getElementById('modalImage');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalDesc = document.getElementById('modalDesc');
-  const closeModalBtn = document.querySelector('.close-btn');
-
-  // Show modal with jersey details
-  document.querySelectorAll('.view-details-button').forEach(button => {
-    button.addEventListener('click', () => {
-      const jerseyKey = button.getAttribute('data-jersey');
-      const details = jerseyDetails[jerseyKey];
-
-      if (details) {
-        modalImg.src = details.imgSrc;
-        modalImg.alt = details.imgAlt;
-        modalTitle.textContent = details.title;
-        modalDesc.textContent = details.description;
-        modal.classList.add('visible');
-        // Focus trap for accessibility could be added here
-        closeModalBtn.focus();
+  <script>
+    // Data for jerseys details
+    const jerseyDetails = {
+      jersey1: {
+        title: "Top Jersey 1",
+        desc: "This is the description for Top Jersey 1. Made with breathable fabric, perfect for fans and players alike.",
+        img: "jersey1.jpg"
+      },
+      jersey2: {
+        title: "Top Jersey 2",
+        desc: "Stylish and comfortable, Top Jersey 2 represents the best of modern football design.",
+        img: "jersey2.jpg"
+      },
+      jersey3: {
+        title: "Top Jersey 3",
+        desc: "A fan favorite with classic colors and premium material.",
+        img: "jersey3.jpg"
+      },
+      jersey4: {
+        title: "Trending Jersey 1",
+        desc: "Trending Jersey 1 is a hot pick this season with vibrant colors and lightweight fabric.",
+        img: "jersey4.jpg"
+      },
+      jersey5: {
+        title: "Trending Jersey 2",
+        desc: "Popular among collectors and fans for its unique design.",
+        img: "jersey5.jpg"
+      },
+      jersey6: {
+        title: "Trending Jersey 3",
+        desc: "Comfort meets style in Trending Jersey 3.",
+        img: "jersey6.jpg"
+      },
+      jersey7: {
+        title: "Retro Jersey 1",
+        desc: "Classic retro design bringing back memories of legendary matches.",
+        img: "jersey7.jpg"
+      },
+      jersey8: {
+        title: "Retro Jersey 2",
+        desc: "Authentic retro style, made with modern fabric technology.",
+        img: "jersey8.jpg"
+      },
+      jersey9: {
+        title: "Retro Jersey 3",
+        desc: "A must-have for vintage football enthusiasts.",
+        img: "jersey9.jpg"
+      },
+      jersey10: {
+        title: "Retro Jersey 4",
+        desc: "Elegant and timeless design with great craftsmanship.",
+        img: "jersey10.jpg"
       }
+    };
+
+    // Show details modal with jersey info
+    const modal = document.getElementById('detailsModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const closeBtn = modal.querySelector('.close-btn');
+
+    document.querySelectorAll('.view-details-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const jerseyKey = button.getAttribute('data-jersey');
+        if (jerseyDetails[jerseyKey]) {
+          modalImg.src = jerseyDetails[jerseyKey].img;
+          modalImg.alt = jerseyDetails[jerseyKey].title;
+          modalTitle.textContent = jerseyDetails[jerseyKey].title;
+          modalDesc.textContent = jerseyDetails[jerseyKey].desc;
+          modal.classList.add('visible');
+          modal.focus();
+        }
+      });
     });
-  });
 
-  // Close modal
-  closeModalBtn.addEventListener('click', () => {
-    modal.classList.remove('visible');
-  });
-
-  // Close modal on outside click
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
+    closeBtn.addEventListener('click', () => {
       modal.classList.remove('visible');
-    }
-  });
+    });
 
-  // Scroll to top button
-  const scrollTopBtn = document.getElementById('scrollTopBtn');
-  window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-      scrollTopBtn.style.display = 'flex';
-    } else {
-      scrollTopBtn.style.display = 'none';
-    }
-  });
-
-  scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  // Reveal sections on scroll
-  const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('visible');
       }
     });
-  }, { threshold: 0.1 });
 
-  sections.forEach(section => {
-    observer.observe(section);
-  });
-</script>
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.style.display = "flex";
+      } else {
+        scrollTopBtn.style.display = "none";
+      }
+    });
 
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Fade in sections on scroll
+    const sections = document.querySelectorAll('section');
+    function checkSections() {
+      const triggerBottom = window.innerHeight * 0.9;
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < triggerBottom) {
+          section.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', checkSections);
+    window.addEventListener('load', checkSections);
+
+  </script>
 </body>
+
 </html>
